@@ -15,11 +15,11 @@ const RegisterCustomerPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/user/register-customer', {
-        name,
-        email,
-        password,
-      });
+  await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user/register-customer`, {
+    name,
+    email,
+    password,
+  });
       setMessage('✅ Customer Registered Successfully');
       navigate('/login-customer');
     } catch (error) {
