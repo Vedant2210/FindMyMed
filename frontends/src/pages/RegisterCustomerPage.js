@@ -37,11 +37,11 @@ const RegisterCustomerPage = () => {
       const decoded = jwtDecode(credentialResponse.credential);
       console.log('Google user:', decoded);
 
-      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user/register-customer`, {
-  name: decoded.name,
-  email: decoded.email,
-  password: 'googleauth', // Dummy password for Google users
-});
+      await axios.post('http://localhost:5000/api/user/register-customer', {
+        name: decoded.name,
+        email: decoded.email,
+        password: 'googleauth', // Dummy password for Google users
+      });
 
       setMessage('✅ Google Registration Successful');
       navigate('/login-customer');
