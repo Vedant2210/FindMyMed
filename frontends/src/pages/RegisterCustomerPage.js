@@ -15,7 +15,7 @@ const RegisterCustomerPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://find-my-med-5o4p.vercel.app/${process.env.REACT_APP_BACKEND_URL}/api/user/register-customer', {
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user/register-customer`, {
         name,
         email,
         password,
@@ -37,7 +37,7 @@ const RegisterCustomerPage = () => {
       const decoded = jwtDecode(credentialResponse.credential);
       console.log('Google user:', decoded);
 
-      await axios.post('https://find-my-med-5o4p.vercel.app/${process.env.REACT_APP_BACKEND_URL}/api/user/register-customer', {
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user/register-customer`, {
         name: decoded.name,
         email: decoded.email,
         password: 'googleauth', // Dummy password for Google users
