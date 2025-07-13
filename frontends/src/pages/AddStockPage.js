@@ -15,10 +15,10 @@ const AddStockPage = () => {
       try {
         const token = localStorage.getItem('token');
 
-        const medRes = await axios.get('http://localhost:5000/api/medicine/all');
+        const medRes = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/medicine/all`);
         setMedicines(medRes.data.medicines);
 
-        const storeRes = await axios.get('http://localhost:5000/api/store/my-stores', {
+        const storeRes = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/store/my-stores`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setStores(storeRes.data);
@@ -36,7 +36,7 @@ const AddStockPage = () => {
     try {
       const token = localStorage.getItem('token');
 
-      await axios.post('http://localhost:5000/api/stock/add', {
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/stock/add`, {
         storeId: selectedStore,
         medicineId: selectedMedicine,
         quantity: Number(quantity)
