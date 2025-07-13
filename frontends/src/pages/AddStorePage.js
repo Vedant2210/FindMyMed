@@ -24,7 +24,7 @@ const AddStorePage = () => {
         }
       };
 
-      const res = await axios.post('http://localhost:5000/api/store/add', {
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/store/add`, {
         name,
         location,
         contact,
