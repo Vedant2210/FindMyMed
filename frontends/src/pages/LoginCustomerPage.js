@@ -14,7 +14,7 @@ const LoginCustomerPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user/login-customer', {
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user/login-customer`, {
         email,
         password,
       });
@@ -33,7 +33,7 @@ const LoginCustomerPage = () => {
     try {
       const decoded = jwtDecode(credentialResponse.credential);
 
-      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user/google-login', {
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user/google-login`, {
         name: decoded.name,
         email: decoded.email,
         googleId: decoded.sub,
