@@ -15,7 +15,7 @@ const RegisterStoreOwnerPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/user/register-storeowner', {
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user/register-storeowner`, {
         name,
         email,
         password,
@@ -34,7 +34,7 @@ const RegisterStoreOwnerPage = () => {
       const googleName = decoded.name;
       const googleEmail = decoded.email;
 
-      await axios.post('http://localhost:5000/api/user/register-storeowner', {
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user/register-storeowner`, {
         name: googleName,
         email: googleEmail,
         password: 'google_login_default',
