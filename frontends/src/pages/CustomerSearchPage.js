@@ -13,7 +13,7 @@ const CustomerSearchPage = () => {
   useEffect(() => {
     const fetchLocations = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/store/locations');
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/store/locations`);
         setLocations(res.data);
       } catch (error) {
         console.error('Error fetching locations:', error);
@@ -29,7 +29,7 @@ const CustomerSearchPage = () => {
 
     if (value.length >= 2) {
       try {
-        const res = await axios.get('http://localhost:5000/api/medicine/suggestions', {
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/medicine/suggestions`, {
           params: { query: value }
         });
         setSuggestions(res.data);
@@ -50,7 +50,7 @@ const CustomerSearchPage = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get('http://localhost:5000/api/stock/availability', {
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/stock/availability`, {
         params: {
           state: selectedState,
           city: selectedCity,
