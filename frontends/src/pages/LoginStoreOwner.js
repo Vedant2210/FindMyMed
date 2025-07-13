@@ -15,7 +15,7 @@ const LoginStoreOwnerPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/user/login-storeowner', { email, password });
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user/login-storeowner`, { email, password });
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('storeOwnerName', res.data.name);
       toast.success('✅ Login Successful');
@@ -30,7 +30,7 @@ const LoginStoreOwnerPage = () => {
       const decoded = jwtDecode(credentialResponse.credential);
       const googleEmail = decoded.email;
 
-      const res = await axios.post('http://localhost:5000/api/user/login-storeowner-google', {
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user/login-storeowner-google`, {
         email: googleEmail
       });
 
