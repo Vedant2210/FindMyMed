@@ -11,7 +11,7 @@ const AddMedicinePage = () => {
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:5000/api/medicine/add', {
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/medicine/add`, {
         name,
         description
       });
